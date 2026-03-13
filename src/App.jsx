@@ -191,72 +191,38 @@ function App() {
       </section>
 
       {/* Services */}
-      <section id="services" className="py-8 sm:py-10 md:py-12 px-0 bg-white">
-        <div className="w-full px-2 sm:px-4 md:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-6 sm:mb-8"
-          >
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#ED5906]">Our Services</h2>
-          </motion.div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            {[
-              { icon: Target, title: 'Comprehensive Campaign Strategy', desc: 'End-to-end election management from planning to execution' },
-              { icon: Users, title: 'Voter Segmentation & Micro-targeting', desc: 'Precise voter identification and personalized outreach' },
-              { icon: Zap, title: 'AI-Integrated Digital Outreach', desc: 'Cutting-edge technology for maximum engagement' },
-              { icon: FileText, title: 'Legislative & Parliamentary Support', desc: 'Bill drafting, news briefings, and policy assistance' }
-            ].map((service, index) => (
-              <motion.div
-                key={service.title}
-                whileInView={{ opacity: 1, y: 0 }}
-                initial={{ opacity: 0, y: 20 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-[#F6EDDD] p-4 rounded-lg shadow-lg"
-              >
-                <service.icon className="w-8 sm:w-10 h-8 sm:h-10 text-[#ED5906] mb-2 sm:mb-3" />
-                <h3 className="text-sm sm:text-base font-semibold mb-1 sm:mb-2">{service.title}</h3>
-                <p className="text-xs sm:text-sm text-gray-700">{service.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Bihar Case Study */}
-      <section className="py-8 sm:py-10 md:py-12 px-0">
-        <div className="w-full px-2 sm:px-4 md:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="bg-white p-4 sm:p-6 rounded-lg shadow-lg"
-          >
-            <h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-[#ED5906]">Bihar Case Study: Women's Voting Bloc</h2>
-            <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
-              <div>
-                <h3 className="text-sm sm:text-base font-semibold mb-1 sm:mb-2">Challenge</h3>
-                <p className="mb-2 sm:mb-3 text-xs sm:text-sm">Low voter turnout in rural areas, particularly among women in traditional strongholds.</p>
-                <h3 className="text-sm sm:text-base font-semibold mb-1 sm:mb-2">Strategy</h3>
-                <p className="mb-2 sm:mb-3 text-xs sm:text-sm">Targeted micro-campaigns focusing on women's issues, local influencers, and community engagement.</p>
-              </div>
-              <div>
-                <h3 className="text-sm sm:text-base font-semibold mb-1 sm:mb-2">Results</h3>
-                <p className="mb-2 sm:mb-3 text-xs sm:text-sm">15% increase in women's voter turnout in Bhojpur and Magadh districts.</p>
-                <h3 className="text-sm sm:text-base font-semibold mb-1 sm:mb-2">Key Areas</h3>
-                <ul className="list-disc list-inside text-xs sm:text-sm">
-                  <li>Bhojpur District</li>
-                  <li>Magadh Region</li>
-                  <li>Rural Women's Groups</li>
-                </ul>
-              </div>
+        <section id="services" className="py-8 sm:py-10 md:py-12 px-0 bg-white">
+          <div className="w-full px-2 sm:px-4 md:px-6 lg:px-8">
+            <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-6 sm:mb-8"
+            >
+          <h2 className="text-2xl sm:text-3xl font-bold text-[#ED5906]">Our Services</h2>
+            </motion.div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          {[
+            { icon: Target, title: 'Comprehensive Campaign Strategy', desc: 'End-to-end election management from planning to execution' },
+            { icon: Users, title: 'Voter Segmentation & Micro-targeting', desc: 'Precise voter identification and personalized outreach' },
+            { icon: Zap, title: 'AI-Integrated Digital Outreach', desc: 'Cutting-edge technology for maximum engagement' },
+            { icon: FileText, title: 'Legislative & Parliamentary Support', desc: 'Bill drafting, news briefings, and policy assistance' }
+          ].map((service, index) => (
+            <motion.div
+              key={service.title}
+              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="bg-[#F6EDDD] p-4 rounded-lg shadow-lg"
+            >
+              <service.icon className="w-8 sm:w-10 h-8 sm:h-10 text-[#ED5906] mb-2 sm:mb-3" />
+              <h3 className="text-sm sm:text-base font-semibold mb-1 sm:mb-2">{service.title}</h3>
+              <p className="text-xs sm:text-sm text-gray-700">{service.desc}</p>
+            </motion.div>
+          ))}
             </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Contact */}
+          </div>
+        </section>
       <section id="contact" className="py-8 sm:py-10 md:py-12 px-0 bg-white">
         <div className="w-full px-2 sm:px-4 md:px-6 lg:px-8">
           <motion.div
@@ -285,7 +251,7 @@ function App() {
               <div className="flex flex-col items-center">
                 <MapPin className="w-8 sm:w-10 h-8 sm:h-10 text-[#ED5906] mb-1 sm:mb-2" />
                 <h3 className="text-base sm:text-lg font-semibold mb-0.5 sm:mb-1">Visit Us</h3>
-                <p className="text-gray-700 text-xs sm:text-sm">Mumbai, Maharashtra</p>
+                <p className="text-gray-700 text-xs sm:text-sm">Hyderabad,Telangana</p>
                 <p className="text-gray-700 text-xs sm:text-sm">India</p>
               </div>
             </div>
