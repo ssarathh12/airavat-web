@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Users, Target, Zap, FileText, BarChart3 } from 'lucide-react';
-
+import vinayImg from './assets/Vinay.png';
 function App() {
   return (
     <div className="min-h-screen bg-[#F6EDDD] text-[#000000]">
@@ -94,7 +94,8 @@ function App() {
             <div className="flex justify-center items-center">
               <div className="w-80 h-80">
                 <img
-                  src="/src/assets/Vinay.png"
+                  src={vinayImg}
+                  // src="/src/assets/Vinay.png"
                   alt="VKP"
                   className="w-full h-full object-cover object-[50%_20%] rounded-lg shadow-lg"
                 />
