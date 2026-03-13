@@ -93,7 +93,7 @@ function App() {
             </div>
             <div className="text-center">
               <img
-                src="https://via.placeholder.com/320x320?text=Vinay+Krishna+Polnati"
+                src="/src/assets/Vinay.png"
                 alt="Vinay Krishna Polnati"
                 className="w-80 h-80 object-cover rounded-lg shadow-lg mx-auto"
               />
