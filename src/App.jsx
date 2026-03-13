@@ -91,12 +91,14 @@ function App() {
                 At Airavat Strategies, we combine traditional political wisdom with cutting-edge technology to ensure victory at the ballot box.
               </p>
             </div>
-            <div className="text-center">
-              <img
-                src="/src/assets/Vinay.png"
-                alt="Vinay Krishna Polnati"
-                className="w-80 h-80 object-cover rounded-lg shadow-lg mx-auto"
-              />
+            <div className="flex justify-center items-center">
+              <div className="w-80 h-80">
+                <img
+                  src="/src/assets/Vinay.png"
+                  alt="VKP"
+                  className="w-full h-full object-cover object-[50%_20%] rounded-lg shadow-lg"
+                />
+              </div>
             </div>
           </motion.div>
         </div>
