@@ -106,7 +106,7 @@ function App() {
             className="grid md:grid-cols-2 gap-8 items-center"
           >
             <div>
-              <h2 className="font-display text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 text-[#ED5906]">Meet Vinay Krishna Polnati</h2>
+              <h2 className="font-display text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 text-[#ED5906]">Meet our Founder</h2>
               <p className="font-sans text-sm sm:text-base mb-2 sm:mb-3">
                 With over 6 years of experience in political consultancy, Vinay has worked with major parties including BJP, INC, AAP, and Shiv Sena (UBT).
               </p>
