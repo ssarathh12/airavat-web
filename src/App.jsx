@@ -1,8 +1,8 @@
-import ktkImg from './assets/KTK.png';// Assuming KTK.png
-import wbImg from './assets/WB.png'; // Assuming WB.png
-import mhImg from './assets/MH.png'; // Assuming MH.png
-import tnImg from './assets/TN.png'; // Assuming TN.png
-import delImg from './assets/DEL.png'; // Assuming DEL.png
+import ktkImg from './assets/KTK_T.png';// Assuming KTK.png
+import wbImg from './assets/WB_T.png'; // Assuming WB.png
+import mhImg from './assets/MH_T.png'; // Assuming MH.png
+import tnImg from './assets/TN_T.png'; // Assuming TN.png
+import delImg from './assets/DEL_T.png'; // Assuming DEL.png
 import vinayImg from './assets/Vinay.png';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Users, Target, Zap, FileText, BarChart3 } from 'lucide-react';
