@@ -1,8 +1,8 @@
-import ktkImg from './assets/ktk.png';
-import wbImg from './assets/wb.png';
-import mhImg from './assets/mh.png'; 
-import tnImg from './assets/tn.png'; 
-import delImg from './assets/del.png'; 
+import ktkImg from './assets/ktk.PNG';
+import wbImg from './assets/wb.PNG';
+import mhImg from './assets/mh.PNG'; 
+import tnImg from './assets/tn.PNG'; 
+import delImg from './assets/del.PNG'; 
 import vinayImg from './assets/Vinay.png';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Users, Target, Zap, FileText, BarChart3 } from 'lucide-react';
