@@ -33,7 +33,6 @@ function App() {
           <a href="#services" className="font-sans text-xs sm:text-sm font-bold text-gray-700 hover:text-[#ED5906] transition-colors uppercase tracking-widest">Services</a>
           <a href="#about" className="font-sans text-xs sm:text-sm font-bold text-gray-700 hover:text-[#ED5906] transition-colors uppercase tracking-widest">About</a>
         </div>
-        
         {/* Secure Victory Button - Direct to Contact Section */}
         <a 
           href="#contact" 
@@ -41,6 +40,7 @@ function App() {
         >
           Secure Victory
         </a>
+        
       </nav>
     </div>
   </div>
