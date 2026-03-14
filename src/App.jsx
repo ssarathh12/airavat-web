@@ -1,12 +1,11 @@
-import ktkImg from './assets/KTKT.png';// Assuming KTK.png
-import wbImg from './assets/WBT.png'; // Assuming WB.png
-import mhImg from './assets/MHT.png'; // Assuming MH.png
-import tnImg from './assets/TNT.png'; // Assuming TN.png
-import delImg from './assets/DELT.png'; // Assuming DEL.png
+import ktkImg from './assets/KTKT.png';
+import wbImg from './assets/WBT.png';
+import mhImg from './assets/MHT.png'; 
+import tnImg from './assets/TNT.png'; 
+import delImg from './assets/DELT.png'; 
 import vinayImg from './assets/Vinay.png';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Users, Target, Zap, FileText, BarChart3 } from 'lucide-react';
-
 
 function App() {
   return (
@@ -122,7 +121,6 @@ function App() {
               <div className="w-80 h-80">
                 <img
                   src={vinayImg}
-                  // src="/src/assets/Vinay.png"
                   alt="VKP"
                   className="w-full h-full object-cover object-[50%_20%] rounded-lg shadow-lg"
                 />
@@ -187,11 +185,11 @@ function App() {
             <div className="w-full md:w-2/3">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                 {[
-                  { name: 'Karnataka \nAE 2023', id: 'karnataka',img: ktkImg },
-                  { name: 'West Bengal \nAE 2021', id: 'westbengal',img: wbImg },
-                  { name: 'Maharashtra \nAE 2024', id: 'maharashtra',img: mhImg },
-                  { name: 'Tamil Nadu \nAE 2021', id: 'tamilnadu',img: tnImg },
-                  { name: 'Delhi \nAE 2020', id: 'delhi',img: delImg }
+                  { name: 'Karnataka \nAE 2023', id: 'karnataka'}//img: ktkImg },
+                  { name: 'West Bengal \nAE 2021', id: 'westbengal'}//,img: wbImg },
+                  { name: 'Maharashtra \nAE 2024', id: 'maharashtra'}//,img: mhImg },
+                  { name: 'Tamil Nadu \nAE 2021', id: 'tamilnadu'}//,img: tnImg },
+                  { name: 'Delhi \nAE 2020', id: 'delhi'}//,img: delImg }
                 ].map((region, index) => (
                   <motion.div
                     key={region.id}
