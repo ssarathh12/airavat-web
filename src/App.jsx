@@ -1,7 +1,7 @@
 import ktkImg from './assets/KTK.png';// Assuming KTK.png
 import wbImg from './assets/WB.png'; // Assuming WB.png
 import mhImg from './assets/MH.png'; // Assuming MH.png
-import pudImg from './assets/PUD.png'; // Assuming PUD.png
+//import pudImg from './assets/PUD.png'; // Assuming PUD.png
 import tnImg from './assets/TN.png'; // Assuming TN.png
 import delImg from './assets/DEL.png'; // Assuming DEL.png
 import { motion } from 'framer-motion';
@@ -187,12 +187,12 @@ function App() {
             <div className="w-full md:w-2/3">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                 {[
-                  { name: 'Karnataka AE 2023', id: 'karnataka',img: ktkImg },
-                  { name: 'West Bengal AE 2021', id: 'westbengal',img: wbImg },
-                  { name: 'Maharashtra AE 2024', id: 'maharashtra',img: mhImg },
-                  { name: 'Puducherry AE 2021', id: 'puducherry',img: pudImg},
-                  { name: 'Tamil Nadu AE 2021', id: 'tamilnadu',img: tnImg },
-                  { name: 'Delhi AE 2020', id: 'delhi',img: delImg }
+                  { name: 'Karnataka \nAE 2023', id: 'karnataka',img: ktkImg },
+                  { name: 'West Bengal \nAE 2021', id: 'westbengal',img: wbImg },
+                  { name: 'Maharashtra \nAE 2024', id: 'maharashtra',img: mhImg },
+                  //{ name: 'Puducherry AE 2021', id: 'puducherry',img: pudImg},
+                  { name: 'Tamil Nadu \nAE 2021', id: 'tamilnadu',img: tnImg },
+                  { name: 'Delhi \nAE 2020', id: 'delhi',img: delImg }
                 ].map((region, index) => (
                   <motion.div
                     key={region.id}
@@ -213,7 +213,7 @@ function App() {
     <div className="text-gray-300">Map Loading...</div>
   )}
 </div>
-                    <h4 className="font-display font-bold text-sm uppercase tracking-wider">
+                    <h4 className="font-display font-bold text-sm uppercase  tracking-wider whitespace-pre-line leading-tight text-center w-full">
   {region.name}</h4>
                   </motion.div>
                 ))}
