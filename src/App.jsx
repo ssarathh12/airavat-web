@@ -8,7 +8,8 @@ function App() {
       <header className="fixed top-0 w-full bg-white/90 backdrop-blur-sm z-50 border-b border-gray-200">
         <div className="w-full px-2 sm:px-4 md:px-6 lg:px-8">
           <div className="flex justify-between items-center py-3 max-w-7xl mx-auto">
-            <div className="text-lg smtext-xl font-bold text-[#ED5906] truncate font-display">Airavat Strategies</div>
+            <a href="#" className="text-lg sm:text-xl font-bold text-[#ED5906] truncate font-display cursor-pointer hover:opacity-80 transition-opacity block"
+>Airavat Strategies</a>
             <nav className="hidden md:flex gap-4 lg:gap-6 text-xs sm:text-sm flex-1 justify-center mx-4">
               <a href="#impact" className="font-sans text-gray-700 hover:text-[#ED5906] transition-colors whitespace-nowrap">Impact</a>
               <a href="#services" className="font-sans text-gray-700 hover:text-[#ED5906] transition-colors whitespace-nowrap">Services</a>
@@ -242,13 +243,12 @@ function App() {
                 <Mail className="w-8 sm:w-10 h-8 sm:h-10 text-[#ED5906] mb-1 sm:mb-2" />
                 <h3 className="font-display text-base sm:text-lg font-semibold mb-0.5 sm:mb-1">Email Us</h3>
                 <p className="font-sans text-gray-700 text-xs sm:text-sm">contact@airavatstrategies.com</p>
-                <p className="font-sans text-gray-700 text-xs sm:text-sm">vinay@airavatstrategies.com</p>
+                
               </div>
               <div className="flex flex-col items-center">
                 <Phone className="w-8 sm:w-10 h-8 sm:h-10 text-[#ED5906] mb-1 sm:mb-2" />
                 <h3 className="font-display text-base sm:text-lg font-semibold mb-0.5 sm:mb-1">Call Us</h3>
-                <p className="font-sans text-gray-700 text-xs sm:text-sm">+91 98765 43210</p>
-                <p className="font-sans text-gray-700 text-xs sm:text-sm">+91 87654 32109</p>
+                <p className="font-sans text-gray-700 text-xs sm:text-sm">+91 9652899946</p>
               </div>
               <div className="flex flex-col items-center">
                 <MapPin className="w-8 sm:w-10 h-8 sm:h-10 text-[#ED5906] mb-1 sm:mb-2" />
