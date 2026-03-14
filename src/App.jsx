@@ -1,8 +1,8 @@
-import ktkImg from './assets/KTK_T.png';// Assuming KTK.png
-import wbImg from './assets/WB_T.png'; // Assuming WB.png
-import mhImg from './assets/MH_T.png'; // Assuming MH.png
-import tnImg from './assets/TN_T.png'; // Assuming TN.png
-import delImg from './assets/DEL_T.png'; // Assuming DEL.png
+import ktkImg from './assets/KTKT.png';// Assuming KTK.png
+import wbImg from './assets/WBT.png'; // Assuming WB.png
+import mhImg from './assets/MHT.png'; // Assuming MH.png
+import tnImg from './assets/TNT.png'; // Assuming TN.png
+import delImg from './assets/DELT.png'; // Assuming DEL.png
 import vinayImg from './assets/Vinay.png';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Users, Target, Zap, FileText, BarChart3 } from 'lucide-react';
@@ -190,7 +190,6 @@ function App() {
                   { name: 'Karnataka \nAE 2023', id: 'karnataka',img: ktkImg },
                   { name: 'West Bengal \nAE 2021', id: 'westbengal',img: wbImg },
                   { name: 'Maharashtra \nAE 2024', id: 'maharashtra',img: mhImg },
-                  //{ name: 'Puducherry AE 2021', id: 'puducherry',img: pudImg},
                   { name: 'Tamil Nadu \nAE 2021', id: 'tamilnadu',img: tnImg },
                   { name: 'Delhi \nAE 2020', id: 'delhi',img: delImg }
                 ].map((region, index) => (
