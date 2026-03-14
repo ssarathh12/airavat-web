@@ -59,16 +59,19 @@ body {
   margin: 0;
 }
 
+
 #root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
+  width: 100%; /* Changed from 1126px to 100% */
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
+}
+
+/* ADD THIS: To prevent horizontal scrolling glitches */
+body {
+  margin: 0;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 h1,
