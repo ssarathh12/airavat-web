@@ -8,12 +8,12 @@ function App() {
       <header className="fixed top-0 w-full bg-white/90 backdrop-blur-sm z-50 border-b border-gray-200">
         <div className="w-full px-2 sm:px-4 md:px-6 lg:px-8">
           <div className="flex justify-between items-center py-3 max-w-7xl mx-auto">
-            <div className="text-lg sm:text-xl font-bold text-[#ED5906] truncate">Airavat Strategies</div>
+            <div className="text-lg smtext-xl font-bold text-[#ED5906] truncate font-display">Airavat Strategies</div>
             <nav className="hidden md:flex gap-4 lg:gap-6 text-xs sm:text-sm flex-1 justify-center mx-4">
-              <a href="#impact" className="text-gray-700 hover:text-[#ED5906] transition-colors whitespace-nowrap">Impact</a>
-              <a href="#services" className="text-gray-700 hover:text-[#ED5906] transition-colors whitespace-nowrap">Services</a>
-              <a href="#about" className="text-gray-700 hover:text-[#ED5906] transition-colors whitespace-nowrap">About</a>
-              <a href="#contact" className="text-gray-700 hover:text-[#ED5906] transition-colors whitespace-nowrap">Contact</a>
+              <a href="#impact" className="font-sans text-gray-700 hover:text-[#ED5906] transition-colors whitespace-nowrap">Impact</a>
+              <a href="#services" className="font-sans text-gray-700 hover:text-[#ED5906] transition-colors whitespace-nowrap">Services</a>
+              <a href="#about" className="font-sans text-gray-700 hover:text-[#ED5906] transition-colors whitespace-nowrap">About</a>
+              <a href="#contact" className="font-sans text-gray-700 hover:text-[#ED5906] transition-colors whitespace-nowrap">Contact</a>
             </nav>
           </div>
         </div>
@@ -28,10 +28,10 @@ function App() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4">
+            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4">
               SHAPING TOMORROW'S LEADERS
             </h1>
-            <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 text-gray-700">
+            <p className="font-sans text-base sm:text-lg md:text-xl mb-6 sm:mb-8 text-gray-700">
               Ground Intelligence • Data-Driven Decisions
             </p>
             <div className="grid md:grid-cols-3 gap-4 sm:gap-6 mt-6 sm:mt-8">
@@ -42,7 +42,7 @@ function App() {
                 className="bg-white p-4 rounded-lg shadow-lg"
               >
                 <Users className="w-10 h-10 text-[#ED5906] mb-2 mx-auto" />
-                <h3 className="text-base font-semibold mb-1">Voter Analysis</h3>
+                <h3 className="font-display text-base font-semibold mb-1">Voter Analysis</h3>
                 <p className="text-sm">Deep constituency insights for strategic planning</p>
               </motion.div>
               <motion.div
@@ -52,8 +52,8 @@ function App() {
                 className="bg-white p-4 rounded-lg shadow-lg"
               >
                 <Target className="w-10 h-10 text-[#ED5906] mb-2 mx-auto" />
-                <h3 className="text-base font-semibold mb-1">Campaign Strategy</h3>
-                <p className="text-sm">Comprehensive election management solutions</p>
+                <h3 className="font-display text-base font-semibold mb-1">Campaign Strategy</h3>
+                <p className="font-sans text-sm">Comprehensive election management solutions</p>
               </motion.div>
               <motion.div
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -62,8 +62,8 @@ function App() {
                 className="bg-white p-4 rounded-lg shadow-lg"
               >
                 <BarChart3 className="w-10 h-10 text-[#ED5906] mb-2 mx-auto" />
-                <h3 className="text-base font-semibold mb-1">Data Visualization</h3>
-                <p className="text-sm">Clear insights from complex political data</p>
+                <h3 className="font-display text-base font-semibold mb-1">Data Visualization</h3>
+                <p className="font-sans text-sm">Clear insights from complex political data</p>
               </motion.div>
             </div>
           </motion.div>
@@ -80,14 +80,14 @@ function App() {
             className="grid md:grid-cols-2 gap-8 items-center"
           >
             <div>
-              <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 text-[#ED5906]">Meet Vinay Krishna Polnati</h2>
-              <p className="text-sm sm:text-base mb-2 sm:mb-3">
+              <h2 className="font-display text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 text-[#ED5906]">Meet Vinay Krishna Polnati</h2>
+              <p className="font-sans text-sm sm:text-base mb-2 sm:mb-3">
                 With over 6 years of experience in political consultancy, Vinay has worked with major parties including BJP, INC, AAP, and Shiv Sena (UBT).
               </p>
-              <p className="text-sm sm:text-base mb-2 sm:mb-3">
+              <p className="font-sans text-sm sm:text-base mb-2 sm:mb-3">
                 His expertise lies in constituency analysis, war room strategy, and delivering data-driven solutions for high-profile leaders.
               </p>
-              <p className="text-sm sm:text-base">
+              <p className="font-sans text-sm sm:text-base">
                 At Airavat Strategies, we combine traditional political wisdom with cutting-edge technology to ensure victory at the ballot box.
               </p>
             </div>
@@ -150,8 +150,9 @@ function App() {
                 transition={{ duration: 0.8 }}
                 className="text-center md:text-left space-y-2"
               >
-                <h2 className="text-2xl sm:text-3xl font-bold text-[#ED5906]">Our Impact</h2>
-                <p className="text-sm sm:text-base text-gray-700">Ground intelligence across India's key electoral regions</p>
+                <h2 className="font-display text-5xl font-extrabold text-brand-black uppercase">
+  Our <span className="text-brand-orange">Impact</span></h2>
+                <p className="text-sm sm:text-base text-gray-700"></p>
               </motion.div>
             </div>
 
@@ -181,7 +182,8 @@ function App() {
                         <circle cx="45" cy="40" r="3" fill="currentColor" opacity="0.5" />
                       </svg>
                     </div>
-                    <h4 className="text-sm sm:text-base font-semibold text-gray-800">{region.name}</h4>
+                    <h4 className="font-display font-bold text-sm uppercase tracking-wider">
+  {region.name}</h4>
                   </motion.div>
                 ))}
               </div>
@@ -199,7 +201,7 @@ function App() {
           transition={{ duration: 0.8 }}
           className="text-center mb-6 sm:mb-8"
             >
-          <h2 className="text-2xl sm:text-3xl font-bold text-[#ED5906]">Our Services</h2>
+          <h2 className="font-display text-2xl sm:text-3xl font-bold text-[#ED5906]">Our Services</h2>
             </motion.div>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {[
@@ -215,9 +217,9 @@ function App() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="bg-[#F6EDDD] p-4 rounded-lg shadow-lg"
             >
-              <service.icon className="w-8 sm:w-10 h-8 sm:h-10 text-[#ED5906] mb-2 sm:mb-3" />
-              <h3 className="text-sm sm:text-base font-semibold mb-1 sm:mb-2">{service.title}</h3>
-              <p className="text-xs sm:text-sm text-gray-700">{service.desc}</p>
+              <service.icon className="w-8 sm:w-10 h-8 sm:h-10 text-[#ED5906] mb-2 sm:mb-3"/>
+              <h3 className="font-display text-sm sm:text-base font-semibold mb-1 sm:mb-2">{service.title}</h3>
+              <p className="font-sans mt-4 text-gray-600 text-lg">Ground intelligence across India's key electoral regions</p>
             </motion.div>
           ))}
             </div>
@@ -231,33 +233,33 @@ function App() {
             transition={{ duration: 0.8 }}
             className="text-center mb-6 sm:mb-8"
           >
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#ED5906]">Get in Touch</h2>
-            <p className="text-sm sm:text-base mt-1 sm:mt-2">Let's discuss how we can help shape your political success</p>
+            <h2 className="font-display text-2xl sm:text-3xl font-bold text-[#ED5906]">Get in Touch</h2>
+            <p className="font-sans text-sm sm:text-base mt-1 sm:mt-2">Let's discuss how we can help shape your political success</p>
           </motion.div>
           <div className="bg-[#F6EDDD] p-4 sm:p-6 rounded-lg shadow-lg">
             <div className="grid md:grid-cols-3 gap-4 sm:gap-6 text-center">
               <div className="flex flex-col items-center">
                 <Mail className="w-8 sm:w-10 h-8 sm:h-10 text-[#ED5906] mb-1 sm:mb-2" />
-                <h3 className="text-base sm:text-lg font-semibold mb-0.5 sm:mb-1">Email Us</h3>
-                <p className="text-gray-700 text-xs sm:text-sm">contact@airavatstrategies.com</p>
-                <p className="text-gray-700 text-xs sm:text-sm">vinay@airavatstrategies.com</p>
+                <h3 className="font-display text-base sm:text-lg font-semibold mb-0.5 sm:mb-1">Email Us</h3>
+                <p className="font-sans text-gray-700 text-xs sm:text-sm">contact@airavatstrategies.com</p>
+                <p className="font-sans text-gray-700 text-xs sm:text-sm">vinay@airavatstrategies.com</p>
               </div>
               <div className="flex flex-col items-center">
                 <Phone className="w-8 sm:w-10 h-8 sm:h-10 text-[#ED5906] mb-1 sm:mb-2" />
-                <h3 className="text-base sm:text-lg font-semibold mb-0.5 sm:mb-1">Call Us</h3>
-                <p className="text-gray-700 text-xs sm:text-sm">+91 98765 43210</p>
-                <p className="text-gray-700 text-xs sm:text-sm">+91 87654 32109</p>
+                <h3 className="font-display text-base sm:text-lg font-semibold mb-0.5 sm:mb-1">Call Us</h3>
+                <p className="font-sans text-gray-700 text-xs sm:text-sm">+91 98765 43210</p>
+                <p className="font-sans text-gray-700 text-xs sm:text-sm">+91 87654 32109</p>
               </div>
               <div className="flex flex-col items-center">
                 <MapPin className="w-8 sm:w-10 h-8 sm:h-10 text-[#ED5906] mb-1 sm:mb-2" />
-                <h3 className="text-base sm:text-lg font-semibold mb-0.5 sm:mb-1">Visit Us</h3>
-                <p className="text-gray-700 text-xs sm:text-sm">Hyderabad,Telangana</p>
-                <p className="text-gray-700 text-xs sm:text-sm">India</p>
+                <h3 className="font-display text-base sm:text-lg font-semibold mb-0.5 sm:mb-1">Visit Us</h3>
+                <p className="font-sans text-gray-700 text-xs sm:text-sm">Hyderabad,Telangana</p>
+                <p className="font-sans text-gray-700 text-xs sm:text-sm">India</p>
               </div>
             </div>
             <div className="mt-4 sm:mt-6 text-center">
-              <p className="text-sm sm:text-base font-semibold text-[#ED5906] mb-0.5 sm:mb-1">Ready to Transform Your Campaign?</p>
-              <p className="text-gray-700 text-xs sm:text-sm">Reach out to us today for a confidential consultation</p>
+              <p className="font-sans text-sm sm:text-base font-semibold text-[#ED5906] mb-0.5 sm:mb-1">Ready to Transform Your Campaign?</p>
+              <p className="font-sans text-gray-700 text-xs sm:text-sm">Reach out to us today for a confidential consultation</p>
             </div>
           </div>
         </div>
@@ -266,7 +268,7 @@ function App() {
       {/* Footer */}
       <footer className="bg-[#000000] text-white py-4 sm:py-6 px-0">
         <div className="w-full px-2 sm:px-4 md:px-6 lg:px-8 text-center">
-          <p className="text-xs sm:text-sm">&copy; 2026 Airavat Strategies. All rights reserved.</p>
+          <p className="font-sans text-xs sm:text-sm">&copy; 2026 Airavat Strategies. All rights reserved.</p>
         </div>
       </footer>
     </div>
