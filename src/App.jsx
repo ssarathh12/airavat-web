@@ -1,24 +1,50 @@
+import ktkImg from './assets/KTK.png';// Assuming KTK.png
+import wbImg from './assets/WB.png'; // Assuming WB.png
+import mhImg from './assets/MH.png'; // Assuming MH.png
+import pudImg from './assets/PUD.png'; // Assuming PUD.png
+import tnImg from './assets/TN.png'; // Assuming TN.png
+import delImg from './assets/DEL.png'; // Assuming DEL.png
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Users, Target, Zap, FileText, BarChart3 } from 'lucide-react';
 import vinayImg from './assets/Vinay.png';
+
 function App() {
   return (
     <div className="min-h-screen bg-[#F6EDDD] text-[#000000]">
       {/* Navigation */}
-      <header className="fixed top-0 w-full bg-white/90 backdrop-blur-sm z-50 border-b border-gray-200">
-        <div className="w-full px-2 sm:px-4 md:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-3 max-w-7xl mx-auto">
-            <a href="#" className="text-lg sm:text-xl font-bold text-[#ED5906] truncate font-display cursor-pointer hover:opacity-80 transition-opacity block"
->Airavat Strategies</a>
-            <nav className="hidden md:flex gap-4 lg:gap-6 text-xs sm:text-sm flex-1 justify-center mx-4">
-              <a href="#impact" className="font-sans text-gray-700 hover:text-[#ED5906] transition-colors whitespace-nowrap">Impact</a>
-              <a href="#services" className="font-sans text-gray-700 hover:text-[#ED5906] transition-colors whitespace-nowrap">Services</a>
-              <a href="#about" className="font-sans text-gray-700 hover:text-[#ED5906] transition-colors whitespace-nowrap">About</a>
-              <a href="#contact" className="font-sans text-gray-700 hover:text-[#ED5906] transition-colors whitespace-nowrap">Contact</a>
-            </nav>
-          </div>
+<header className="fixed top-0 w-full bg-white/95 backdrop-blur-md z-50 border-b border-gray-200">
+  <div className="w-[95%] lg:w-[90%] mx-auto">
+    <div className="flex justify-between items-center h-20">
+      
+      {/* Brand - Clickable to Top */}
+      <div className="flex-shrink-0">
+        <a 
+          href="#" 
+          className="text-lg sm:text-xl font-bold text-[#ED5906] font-display cursor-pointer hover:opacity-80 transition-opacity block"
+        >
+          Airavat Strategies
+        </a>
+      </div>
+
+      {/* Navigation - Pinned Right */}
+      <nav className="flex items-center gap-6 lg:gap-10">
+        <div className="hidden md:flex items-center gap-6 lg:gap-10">
+          <a href="#impact" className="font-sans text-xs sm:text-sm font-bold text-gray-700 hover:text-[#ED5906] transition-colors uppercase tracking-widest">Impact</a>
+          <a href="#services" className="font-sans text-xs sm:text-sm font-bold text-gray-700 hover:text-[#ED5906] transition-colors uppercase tracking-widest">Services</a>
+          <a href="#about" className="font-sans text-xs sm:text-sm font-bold text-gray-700 hover:text-[#ED5906] transition-colors uppercase tracking-widest">About</a>
         </div>
-      </header>
+        
+        {/* Secure Victory Button - Direct to Contact Section */}
+        <a 
+          href="#contact" 
+          className="bg-black text-white px-10 py-3 rounded-full font-display text-[11px] font-black uppercase tracking-[0.15em] hover:bg-[#ED5906] transition-all shadow-xl active:scale-95 whitespace-nowrap flex-shrink-0"
+        >
+          Secure Victory
+        </a>
+      </nav>
+    </div>
+  </div>
+</header>
 
       {/* Hero Section */}
       <section className="pt-20 sm:pt-24 pb-8 sm:pb-12 px-0">
@@ -161,12 +187,12 @@ function App() {
             <div className="w-full md:w-2/3">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                 {[
-                  { name: 'Karnataka AE 2023', id: 'karnataka' },
-                  { name: 'West Bengal AE 2021', id: 'westbengal' },
-                  { name: 'Maharashtra AE 2024', id: 'maharashtra' },
-                  { name: 'Puducherry AE 2021', id: 'puducherry' },
-                  { name: 'Tamil Nadu AE 2021', id: 'tamilnadu' },
-                  { name: 'Delhi AE 2020', id: 'delhi' }
+                  { name: 'Karnataka AE 2023', id: 'karnataka',img: ktkImg },
+                  { name: 'West Bengal AE 2021', id: 'westbengal',img: wbImg },
+                  { name: 'Maharashtra AE 2024', id: 'maharashtra',img: mhImg },
+                  { name: 'Puducherry AE 2021', id: 'puducherry',img: pudImg},
+                  { name: 'Tamil Nadu AE 2021', id: 'tamilnadu',img: tnImg },
+                  { name: 'Delhi AE 2020', id: 'delhi',img: delImg }
                 ].map((region, index) => (
                   <motion.div
                     key={region.id}
@@ -176,13 +202,17 @@ function App() {
                     className="bg-white p-4 sm:p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
                   >
                     {/* Mock Map Visualization */}
-                    <div className="bg-gray-50 rounded-md p-4 mb-3 h-32 sm:h-40 flex items-center justify-center border-2 border-gray-200">
-                      <svg viewBox="0 0 100 100" className="w-full h-full text-gray-300" fill="none" stroke="currentColor" strokeWidth="0.5">
-                        {/* Generic state outline placeholder */}
-                        <path d="M 30 20 L 70 15 L 75 40 L 65 55 L 45 60 L 25 50 Z" />
-                        <circle cx="45" cy="40" r="3" fill="currentColor" opacity="0.5" />
-                      </svg>
-                    </div>
+                    <div className="bg-white rounded-md mb-3 h-32 sm:h-48 flex items-center justify-center border border-gray-100 overflow-hidden shadow-inner">
+  {region.img ? (
+    <img 
+      src={region.img} 
+      alt={region.name} 
+      className="w-full h-full object-contain p-2 hover:scale-110 transition-transform duration-500" 
+    />
+  ) : (
+    <div className="text-gray-300">Map Loading...</div>
+  )}
+</div>
                     <h4 className="font-display font-bold text-sm uppercase tracking-wider">
   {region.name}</h4>
                   </motion.div>
