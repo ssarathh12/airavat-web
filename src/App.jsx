@@ -1,12 +1,12 @@
 import ktkImg from './assets/KTK.png';// Assuming KTK.png
 import wbImg from './assets/WB.png'; // Assuming WB.png
 import mhImg from './assets/MH.png'; // Assuming MH.png
-//import pudImg from './assets/PUD.png'; // Assuming PUD.png
 import tnImg from './assets/TN.png'; // Assuming TN.png
 import delImg from './assets/DEL.png'; // Assuming DEL.png
+import vinayImg from './assets/Vinay.png';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Users, Target, Zap, FileText, BarChart3 } from 'lucide-react';
-import vinayImg from './assets/Vinay.png';
+
 
 function App() {
   return (
