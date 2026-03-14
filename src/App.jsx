@@ -185,10 +185,10 @@ function App() {
             <div className="w-full md:w-2/3">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                 {[
-                  { name: 'Karnataka \nAE 2023', id: 'karnataka'}//img: ktkImg },
-                  { name: 'West Bengal \nAE 2021', id: 'westbengal'}//,img: wbImg },
-                  { name: 'Maharashtra \nAE 2024', id: 'maharashtra'}//,img: mhImg },
-                  { name: 'Tamil Nadu \nAE 2021', id: 'tamilnadu'}//,img: tnImg },
+                  { name: 'Karnataka \nAE 2023', id: 'karnataka'},//img: ktkImg },
+                  { name: 'West Bengal \nAE 2021', id: 'westbengal'},//,img: wbImg },
+                  { name: 'Maharashtra \nAE 2024', id: 'maharashtra'},//,img: mhImg },
+                  { name: 'Tamil Nadu \nAE 2021', id: 'tamilnadu'},//,img: tnImg },
                   { name: 'Delhi \nAE 2020', id: 'delhi'}//,img: delImg }
                 ].map((region, index) => (
                   <motion.div
