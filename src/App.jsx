@@ -5,9 +5,12 @@ import tnImg from './assets/tn.PNG';
 import delImg from './assets/del.PNG'; 
 import vinayImg from './assets/Vinay.png';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Users, Target, Zap, FileText, BarChart3 } from 'lucide-react';
+import { Mail, Phone, MapPin, Users, Target, Zap, FileText, BarChart3, Menu, X } from 'lucide-react';
+import { useState } from 'react';
 
 function App() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-[#F6EDDD] text-[#000000]">
       {/* Navigation */}
@@ -26,22 +29,46 @@ function App() {
       </div>
 
       {/* Navigation - Pinned Right */}
-      <nav className="flex items-center gap-6 lg:gap-10">
+      <nav className="flex items-center gap-2 lg:gap-10">
         <div className="hidden md:flex items-center gap-6 lg:gap-10">
           <a href="#impact" className="font-sans text-xs sm:text-sm font-bold text-gray-700 hover:text-[#ED5906] transition-colors uppercase tracking-widest">Impact</a>
           <a href="#services" className="font-sans text-xs sm:text-sm font-bold text-gray-700 hover:text-[#ED5906] transition-colors uppercase tracking-widest">Services</a>
           <a href="#about" className="font-sans text-xs sm:text-sm font-bold text-gray-700 hover:text-[#ED5906] transition-colors uppercase tracking-widest">About</a>
         </div>
-        {/* Secure Victory Button - Direct to Contact Section */}
+        {/* Secure Victory Button - Hidden on mobile */}
         <a 
           href="#contact" 
-          className="bg-black text-white px-10 py-3 rounded-full font-display text-[11px] font-black uppercase tracking-[0.15em] hover:bg-[#ED5906] transition-all shadow-xl active:scale-95 whitespace-nowrap flex-shrink-0"
+          className="hidden sm:inline-block bg-black text-white px-6 sm:px-10 py-2 sm:py-3 rounded-full font-display text-[9px] sm:text-[11px] font-black uppercase tracking-[0.15em] hover:bg-[#ED5906] transition-all shadow-xl active:scale-95 whitespace-nowrap flex-shrink-0"
         >
           Secure Victory
         </a>
         
+        {/* Mobile Menu Button */}
+        <button 
+          className="md:hidden p-2"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
       </nav>
     </div>
+
+    {/* Mobile Dropdown Menu */}
+    {isMenuOpen && (
+      <div className="md:hidden pb-4 border-t border-gray-200 bg-white">
+        <a href="#impact" className="block py-2 px-4 font-sans text-sm font-bold text-gray-700 hover:text-[#ED5906] transition-colors uppercase tracking-widest" onClick={() => setIsMenuOpen(false)}>Impact</a>
+        <a href="#services" className="block py-2 px-4 font-sans text-sm font-bold text-gray-700 hover:text-[#ED5906] transition-colors uppercase tracking-widest" onClick={() => setIsMenuOpen(false)}>Services</a>
+        <a href="#about" className="block py-2 px-4 font-sans text-sm font-bold text-gray-700 hover:text-[#ED5906] transition-colors uppercase tracking-widest" onClick={() => setIsMenuOpen(false)}>About</a>
+        {/* Secure Victory in Mobile Menu */}
+        <a 
+          href="#contact" 
+          className="block sm:hidden bg-black text-white px-4 py-2 mx-4 mt-2 rounded-full font-display text-[10px] font-black uppercase tracking-[0.15em] hover:bg-[#ED5906] transition-all text-center"
+          onClick={() => setIsMenuOpen(false)}
+        >
+          Secure Victory
+        </a>
+      </div>
+    )}
   </div>
 </header>
 
