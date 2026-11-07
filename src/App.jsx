@@ -5,7 +5,7 @@ import tnImg from './assets/tn.PNG';
 import delImg from './assets/del.PNG'; 
 import vinayImg from './assets/Vinay.png';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Users, Target, Zap, FileText, BarChart3, Menu, X } from 'lucide-react';
+import { Mail, Phone, MapPin, Users, Target, Zap, FileText, BarChart3, Menu, X, MessageCircle } from 'lucide-react';
 import { useState } from 'react';
 
 function App() {
@@ -81,7 +81,7 @@ function App() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4">
+            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 text-[#101519]">
               SHAPING TOMORROW'S LEADERS
             </h1>
             <p className="font-sans text-base sm:text-lg md:text-xl mb-6 sm:mb-8 text-gray-700">
@@ -260,10 +260,10 @@ function App() {
             </motion.div>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {[
-            { icon: Target, title: 'Comprehensive Campaign Strategy', desc: 'End-to-end election management from planning to execution' },
-            { icon: Users, title: 'Voter Segmentation & Micro-targeting', desc: 'Precise voter identification and personalized outreach' },
-            { icon: Zap, title: 'AI-Integrated Digital Outreach', desc: 'Cutting-edge technology for maximum engagement' },
-            { icon: FileText, title: 'Legislative & Parliamentary Support', desc: 'Bill drafting, news briefings, and policy assistance' }
+            { icon: Target, title: 'Comprehensive Campaign Strategy', desc: 'Constituency blueprints covering positioning, messaging, voter segments and a phase-wise outreach plan.' },
+            { icon: Users, title: 'Voter Segmentation & Micro-targeting', desc: 'Booth-level analysis of past Form 20 results and demographics to find where votes can be won.' },
+            { icon: Zap, title: 'AI-Integrated Digital Outreach', desc: 'Content, monitoring and response for social and messaging channels, informed by daily sentiment tracking.' },
+            { icon: FileText, title: 'Legislative & Parliamentary Support', desc: 'Question drafting, bill briefs, debate notes and daily media analysis for sitting MPs and MLAs.' }
           ].map((service, index) => (
             <motion.div
               key={service.title}
@@ -274,7 +274,7 @@ function App() {
             >
               <service.icon className="w-8 sm:w-10 h-8 sm:h-10 text-[#ED5906] mb-2 sm:mb-3"/>
               <h3 className="font-display text-sm sm:text-base font-semibold mb-1 sm:mb-2">{service.title}</h3>
-              <p className="font-sans mt-4 text-gray-600 text-lg">Ground intelligence across India's key electoral regions</p>
+              <p className="font-sans mt-4 text-gray-600 text-base">{service.desc}</p>
             </motion.div>
           ))}
             </div>
@@ -296,24 +296,33 @@ function App() {
               <div className="flex flex-col items-center">
                 <Mail className="w-8 sm:w-10 h-8 sm:h-10 text-[#ED5906] mb-1 sm:mb-2" />
                 <h3 className="font-display text-base sm:text-lg font-semibold mb-0.5 sm:mb-1">Email Us</h3>
-                <p className="font-sans text-gray-700 text-xs sm:text-sm">contact@airavatstrategies.com</p>
+                <a href="mailto:contact@airavatstrategies.com" className="font-sans text-gray-700 text-xs sm:text-sm hover:text-[#ED5906] underline-offset-2 hover:underline">contact@airavatstrategies.com</a>
                 
               </div>
               <div className="flex flex-col items-center">
                 <Phone className="w-8 sm:w-10 h-8 sm:h-10 text-[#ED5906] mb-1 sm:mb-2" />
                 <h3 className="font-display text-base sm:text-lg font-semibold mb-0.5 sm:mb-1">Call Us</h3>
-                <p className="font-sans text-gray-700 text-xs sm:text-sm">+91 9652899946</p>
+                <a href="tel:+919652899946" className="font-sans text-gray-700 text-xs sm:text-sm hover:text-[#ED5906] underline-offset-2 hover:underline">+91 9652899946</a>
               </div>
               <div className="flex flex-col items-center">
                 <MapPin className="w-8 sm:w-10 h-8 sm:h-10 text-[#ED5906] mb-1 sm:mb-2" />
                 <h3 className="font-display text-base sm:text-lg font-semibold mb-0.5 sm:mb-1">Visit Us</h3>
-                <p className="font-sans text-gray-700 text-xs sm:text-sm">Hyderabad,Telangana</p>
-                <p className="font-sans text-gray-700 text-xs sm:text-sm">India</p>
+                <p className="font-sans text-gray-700 text-xs sm:text-sm">Alt F Coworking Space, Begumpet</p>
+                <p className="font-sans text-gray-700 text-xs sm:text-sm">Hyderabad, Telangana, India</p>
               </div>
             </div>
             <div className="mt-4 sm:mt-6 text-center">
               <p className="font-sans text-sm sm:text-base font-semibold text-[#ED5906] mb-0.5 sm:mb-1">Ready to Transform Your Campaign?</p>
               <p className="font-sans text-gray-700 text-xs sm:text-sm">Reach out to us today for a confidential consultation</p>
+              <a
+                href="https://wa.me/919652899946?text=Hello%20Airavat%20Strategies%2C%20I%20would%20like%20to%20discuss%20a%20consultation."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 mt-4 bg-[#EC5707] text-white px-6 py-3 rounded-full font-sans text-sm font-semibold hover:opacity-90 transition-opacity"
+              >
+                <MessageCircle className="w-5 h-5" />
+                Chat on WhatsApp
+              </a>
             </div>
           </div>
         </div>
