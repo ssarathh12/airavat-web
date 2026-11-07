@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://airavatstrategies.com/sitemap.xml
