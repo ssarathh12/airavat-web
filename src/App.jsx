@@ -2,15 +2,19 @@ import vinayImg from './assets/Vinay.webp';
 import logoMark from './logoMark.js';
 import IndiaMap from './IndiaMap.jsx';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Users, Target, Zap, FileText, ScanSearch, Compass, PieChart, Menu, X, MessageCircle, Lock } from 'lucide-react';
+import { Mail, Phone, MapPin, Users, Target, Zap, FileText, ScanSearch, Compass, PieChart, Menu, X, MessageCircle, Lock, Briefcase } from 'lucide-react';
 import { useState } from 'react';
 
 const NAV = [
   { href: '#about', label: 'About' },
   { href: '#services', label: 'Services' },
   { href: '#impact', label: 'Where We Work' },
+  { href: '#careers', label: 'Careers' },
   { href: '#contact', label: 'Contact' },
 ];
+
+const LINKEDIN_JOBS = 'https://www.linkedin.com/company/107107584/jobs/';
+const RESUME_MAILTO = 'mailto:contact@airavatstrategies.com?subject=' + encodeURIComponent('Resume: [Your name] for [Role]') + '&body=' + encodeURIComponent('Name:\nRole applied for:\nCurrent city:\nPhone:\nLinkedIn profile:\n\nPlease attach your resume as a PDF.');
 
 const CTA_LABEL = 'Book a confidential consultation';
 const PRIMARY_BTN = 'inline-flex items-center justify-center gap-2 bg-brand-orange text-white px-6 py-3 rounded-btn font-sans text-caption font-semibold hover:bg-brand-orange-dark transition-colors';
@@ -391,6 +395,25 @@ function App() {
         </div>
       </section>
 
+      {/* Careers */}
+      <section id="careers" className="py-16 bg-brand-grey">
+        <div className="w-[92%] lg:w-[88%] mx-auto text-center">
+          <Briefcase className="w-10 h-10 text-brand-orange mx-auto mb-3" />
+          <h2 className="text-section font-bold mb-3">Join Our Team</h2>
+          <p className="text-brand-ink/70 max-w-[60ch] mx-auto">
+            We look for researchers, data analysts and campaign professionals who want to work on elections and legislative work. See our current openings on LinkedIn, or send us your resume.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center mt-8">
+            <a href={LINKEDIN_JOBS} target="_blank" rel="noopener noreferrer" className={PRIMARY_BTN}>View openings on LinkedIn</a>
+            <a href={RESUME_MAILTO} className={SECONDARY_BTN}>
+              <Mail className="w-5 h-5" />
+              Email your resume
+            </a>
+          </div>
+          <p className="text-caption text-brand-ink/70 mt-4">Send your resume as a PDF to contact@airavatstrategies.com, with the role in the subject line.</p>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="bg-brand-ink text-white pt-12 pb-6">
         <div className="w-[92%] lg:w-[88%] mx-auto">
@@ -409,6 +432,7 @@ function App() {
               <p><a href="mailto:contact@airavatstrategies.com" className="text-white/70 hover:text-brand-orange">contact@airavatstrategies.com</a></p>
               <p><a href="tel:+919652899946" className="text-white/70 hover:text-brand-orange">+91 9652899946</a></p>
               <p><a href="https://www.linkedin.com/company/107107584/" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-brand-orange">LinkedIn</a></p>
+              <p><a href="#careers" className="text-white/70 hover:text-brand-orange">Careers</a></p>
               <p><a href="/privacy.html" className="text-white/70 hover:text-brand-orange">Privacy Policy</a></p>
             </div>
           </div>
