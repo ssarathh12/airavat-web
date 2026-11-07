@@ -24,6 +24,7 @@ const IMPACT = [
   { id: 'wb', name: 'West Bengal', year: 'Assembly election 2021' },
   { id: 'mh', name: 'Maharashtra', year: 'Assembly election 2024' },
   { id: 'tn', name: 'Tamil Nadu', year: 'Assembly election 2021' },
+  { id: 'py', name: 'Puducherry', year: 'Assembly election 2021' },
   { id: 'dl', name: 'Delhi', year: 'Assembly election 2020' },
 ];
 
