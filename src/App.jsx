@@ -35,31 +35,16 @@ const STEPS = [
   { title: 'Monitor', desc: 'Daily media and sentiment tracking, with course corrections made early.' },
 ];
 
-const FORM_ENDPOINT = 'https://formsubmit.co/ajax/contact@airavatstrategies.com';
+const FORM_ENDPOINT = 'https://formsubmit.co/contact@airavatstrategies.com';
+const FORM_RETURN = 'https://airavatstrategies.com/?enquiry=sent#contact';
 const FIELD = 'w-full rounded-btn border border-brand-ink/20 bg-white px-4 py-3 text-body text-brand-ink focus:outline-none focus:border-brand-orange';
 const LABEL = 'block text-caption font-semibold mb-1';
 
 function EnquiryForm() {
-  const [status, setStatus] = useState('idle');
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-    const form = e.currentTarget;
-    const body = new FormData(form);
-    if (body.get('_honey')) return;
-    body.append('_subject', `Website enquiry from ${body.get('name')}`);
-    body.append('_template', 'table');
-    setStatus('sending');
-    try {
-      const res = await fetch(FORM_ENDPOINT, { method: 'POST', headers: { Accept: 'application/json' }, body });
-      const json = await res.json().catch(() => ({}));
-      if (!res.ok || String(json.success) !== 'true') throw new Error('Not sent');
-      form.reset();
-      setStatus('sent');
-    } catch {
-      setStatus('error');
-    }
-  }
+  // FormSubmit sends the visitor back here with ?enquiry=sent after a successful submission
+  const [status, setStatus] = useState(() =>
+    typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('enquiry') === 'sent' ? 'sent' : 'idle'
+  );
 
   if (status === 'sent') {
     return (
@@ -71,7 +56,11 @@ function EnquiryForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white rounded-btn p-6 sm:p-8 text-left grid sm:grid-cols-2 gap-5">
+    <form action={FORM_ENDPOINT} method="POST" onSubmit={() => setStatus('sending')} className="bg-white rounded-btn p-6 sm:p-8 text-left grid sm:grid-cols-2 gap-5">
+      <input type="hidden" name="_subject" value="New enquiry from airavatstrategies.com" />
+      <input type="hidden" name="_template" value="table" />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_next" value={FORM_RETURN} />
       <input type="text" name="_honey" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
       <div>
         <label htmlFor="f-name" className={LABEL}>Name *</label>
@@ -122,9 +111,6 @@ function EnquiryForm() {
         <button type="submit" disabled={status === 'sending'} className={`${PRIMARY_BTN} disabled:opacity-60`}>
           {status === 'sending' ? 'Sending...' : 'Send enquiry'}
         </button>
-        {status === 'error' && (
-          <p className="text-caption text-brand-orange-dark">Your message could not be sent. Please email or WhatsApp us instead.</p>
-        )}
       </div>
     </form>
   );
