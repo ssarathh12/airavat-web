@@ -121,7 +121,7 @@ function App() {
             <div className="max-w-[65ch]">
               <h2 className="text-section font-bold mb-5">Meet Our Founder</h2>
               <p className="mb-4">
-                With over 6 years of experience in political consultancy, Vinay has worked with major parties including BJP, INC, AAP, and Shiv Sena (UBT).
+                With over 6 years of experience in political consultancy, Vinay and the Airavat team have worked with major parties including BJP, INC, AAP, and Shiv Sena (UBT).
               </p>
               <p className="mb-4">
                 His expertise lies in constituency analysis, war room strategy, and delivering data-driven solutions for high-profile leaders.
