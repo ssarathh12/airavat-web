@@ -45,15 +45,13 @@ function EnquiryForm() {
   async function handleSubmit(e) {
     e.preventDefault();
     const form = e.currentTarget;
-    const data = Object.fromEntries(new FormData(form));
-    if (data._honey) return;
+    const body = new FormData(form);
+    if (body.get('_honey')) return;
+    body.append('_subject', `Website enquiry from ${body.get('name')}`);
+    body.append('_template', 'table');
     setStatus('sending');
     try {
-      const res = await fetch(FORM_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ ...data, _subject: `Website enquiry from ${data.name}`, _template: 'table' }),
-      });
+      const res = await fetch(FORM_ENDPOINT, { method: 'POST', headers: { Accept: 'application/json' }, body });
       const json = await res.json().catch(() => ({}));
       if (!res.ok || String(json.success) !== 'true') throw new Error('Not sent');
       form.reset();
