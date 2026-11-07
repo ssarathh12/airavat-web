@@ -38,7 +38,7 @@ const STEPS = [
 const CONTACT_EMAIL = 'contact@airavatstrategies.com';
 // Web3Forms access key (free, from web3forms.com, sent to contact@airavatstrategies.com).
 // While empty, the form opens the visitor's email app with the enquiry filled in.
-const WEB3FORMS_KEY = '';
+const WEB3FORMS_KEY = '6b996b75-f285-4f4c-9489-675fa73ba1ac';
 const FIELD = 'w-full rounded-btn border border-brand-ink/20 bg-white px-4 py-3 text-body text-brand-ink focus:outline-none focus:border-brand-orange';
 const LABEL = 'block text-caption font-semibold mb-1';
 const FORM_FIELDS = [
