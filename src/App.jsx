@@ -35,16 +35,49 @@ const STEPS = [
   { title: 'Monitor', desc: 'Daily media and sentiment tracking, with course corrections made early.' },
 ];
 
-const FORM_ENDPOINT = 'https://formsubmit.co/contact@airavatstrategies.com';
-const FORM_RETURN = 'https://airavatstrategies.com/?enquiry=sent#contact';
+const CONTACT_EMAIL = 'contact@airavatstrategies.com';
+// Web3Forms access key (free, from web3forms.com, sent to contact@airavatstrategies.com).
+// While empty, the form opens the visitor's email app with the enquiry filled in.
+const WEB3FORMS_KEY = '';
 const FIELD = 'w-full rounded-btn border border-brand-ink/20 bg-white px-4 py-3 text-body text-brand-ink focus:outline-none focus:border-brand-orange';
 const LABEL = 'block text-caption font-semibold mb-1';
+const FORM_FIELDS = [
+  ['Name', 'name'], ['Role', 'role'], ['Phone', 'phone'], ['Email', 'email'],
+  ['State', 'state'], ['Constituency', 'constituency'], ['Message', 'message'],
+];
 
 function EnquiryForm() {
-  // FormSubmit sends the visitor back here with ?enquiry=sent after a successful submission
-  const [status, setStatus] = useState(() =>
-    typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('enquiry') === 'sent' ? 'sent' : 'idle'
-  );
+  const [status, setStatus] = useState('idle');
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    if (data.get('_honey')) return;
+    const subject = `Website enquiry from ${data.get('name')}`;
+
+    if (!WEB3FORMS_KEY) {
+      const body = FORM_FIELDS.map(([label, key]) => `${label}: ${data.get(key) || '-'}`).join('\n');
+      window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      setStatus('mailto');
+      return;
+    }
+
+    setStatus('sending');
+    try {
+      data.delete('_honey');
+      data.append('access_key', WEB3FORMS_KEY);
+      data.append('subject', subject);
+      data.append('from_name', 'airavatstrategies.com');
+      const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { Accept: 'application/json' }, body: data });
+      const json = await res.json();
+      if (!json.success) throw new Error(json.message);
+      form.reset();
+      setStatus('sent');
+    } catch {
+      setStatus('error');
+    }
+  }
 
   if (status === 'sent') {
     return (
@@ -56,11 +89,7 @@ function EnquiryForm() {
   }
 
   return (
-    <form action={FORM_ENDPOINT} method="POST" onSubmit={() => setStatus('sending')} className="bg-white rounded-btn p-6 sm:p-8 text-left grid sm:grid-cols-2 gap-5">
-      <input type="hidden" name="_subject" value="New enquiry from airavatstrategies.com" />
-      <input type="hidden" name="_template" value="table" />
-      <input type="hidden" name="_captcha" value="false" />
-      <input type="hidden" name="_next" value={FORM_RETURN} />
+    <form onSubmit={handleSubmit} className="bg-white rounded-btn p-6 sm:p-8 text-left grid sm:grid-cols-2 gap-5">
       <input type="text" name="_honey" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
       <div>
         <label htmlFor="f-name" className={LABEL}>Name *</label>
@@ -111,6 +140,12 @@ function EnquiryForm() {
         <button type="submit" disabled={status === 'sending'} className={`${PRIMARY_BTN} disabled:opacity-60`}>
           {status === 'sending' ? 'Sending...' : 'Send enquiry'}
         </button>
+        {status === 'mailto' && (
+          <p className="text-caption text-brand-ink/70">Your email app should now open with your enquiry ready to send. If it did not, write to us at {CONTACT_EMAIL} or WhatsApp us.</p>
+        )}
+        {status === 'error' && (
+          <p className="text-caption text-brand-orange-dark">Your message could not be sent. Please email or WhatsApp us instead.</p>
+        )}
       </div>
     </form>
   );
@@ -180,7 +215,7 @@ function App() {
         <div className="w-[92%] lg:w-[88%] mx-auto">
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="text-center">
             <h1 className="text-section md:text-hero font-bold text-brand-ink mb-4">
-              Political strategy built on booth-level data
+              Shaping Tomorrow's Leaders
             </h1>
             <p className="text-body text-brand-ink/70 mb-8 max-w-[62ch] mx-auto">
               Airavat Strategies helps candidates, legislators and parties in Karnataka, Telangana, Andhra Pradesh and Goa plan campaigns and govern with evidence.
