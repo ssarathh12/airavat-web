@@ -2,7 +2,7 @@ import vinayImg from './assets/Vinay.webp';
 import logoMark from './logoMark.js';
 import IndiaMap from './IndiaMap.jsx';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Users, Target, Zap, FileText, ScanSearch, Compass, PieChart, Menu, X, MessageCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Users, Target, Zap, FileText, ScanSearch, Compass, PieChart, Menu, X, MessageCircle, Lock } from 'lucide-react';
 import { useState } from 'react';
 
 const NAV = [
@@ -27,6 +27,110 @@ const IMPACT = [
   { id: 'py', name: 'Puducherry', year: 'Assembly election 2021' },
   { id: 'dl', name: 'Delhi', year: 'Assembly election 2020' },
 ];
+
+const STEPS = [
+  { title: 'Diagnose', desc: 'Booth-level study of past results, demographics and local issues to see where the seat really stands.' },
+  { title: 'Plan', desc: 'A constituency blueprint covering positioning, messaging, voter segments and a phase-wise outreach calendar.' },
+  { title: 'Execute', desc: 'War-room support on the ground and online, from booth committees to daily content.' },
+  { title: 'Monitor', desc: 'Daily media and sentiment tracking, with course corrections made early.' },
+];
+
+const FORM_ENDPOINT = 'https://formsubmit.co/ajax/contact@airavatstrategies.com';
+const FIELD = 'w-full rounded-btn border border-brand-ink/20 bg-white px-4 py-3 text-body text-brand-ink focus:outline-none focus:border-brand-orange';
+const LABEL = 'block text-caption font-semibold mb-1';
+
+function EnquiryForm() {
+  const [status, setStatus] = useState('idle');
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const data = Object.fromEntries(new FormData(form));
+    if (data._honey) return;
+    setStatus('sending');
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ ...data, _subject: `Website enquiry from ${data.name}`, _template: 'table' }),
+      });
+      const json = await res.json().catch(() => ({}));
+      if (!res.ok || String(json.success) !== 'true') throw new Error('Not sent');
+      form.reset();
+      setStatus('sent');
+    } catch {
+      setStatus('error');
+    }
+  }
+
+  if (status === 'sent') {
+    return (
+      <div className="bg-white rounded-btn p-8 text-center">
+        <p className="font-display text-card font-semibold mb-2">Thank you. We have your message.</p>
+        <p className="text-brand-ink/70">We will get back to you within one working day.</p>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="bg-white rounded-btn p-6 sm:p-8 text-left grid sm:grid-cols-2 gap-5">
+      <input type="text" name="_honey" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
+      <div>
+        <label htmlFor="f-name" className={LABEL}>Name *</label>
+        <input id="f-name" name="name" required className={FIELD} autoComplete="name" />
+      </div>
+      <div>
+        <label htmlFor="f-role" className={LABEL}>You are</label>
+        <select id="f-role" name="role" className={FIELD} defaultValue="">
+          <option value="" disabled>Select</option>
+          <option>Candidate or aspirant</option>
+          <option>Sitting MLA or MP</option>
+          <option>Party office</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div>
+        <label htmlFor="f-phone" className={LABEL}>Phone *</label>
+        <input id="f-phone" name="phone" type="tel" required className={FIELD} autoComplete="tel" />
+      </div>
+      <div>
+        <label htmlFor="f-email" className={LABEL}>Email</label>
+        <input id="f-email" name="email" type="email" className={FIELD} autoComplete="email" />
+      </div>
+      <div>
+        <label htmlFor="f-state" className={LABEL}>State</label>
+        <select id="f-state" name="state" className={FIELD} defaultValue="">
+          <option value="" disabled>Select</option>
+          <option>Karnataka</option>
+          <option>Telangana</option>
+          <option>Andhra Pradesh</option>
+          <option>Goa</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div>
+        <label htmlFor="f-constituency" className={LABEL}>Constituency</label>
+        <input id="f-constituency" name="constituency" className={FIELD} />
+      </div>
+      <div className="sm:col-span-2">
+        <label htmlFor="f-message" className={LABEL}>How can we help? *</label>
+        <textarea id="f-message" name="message" required rows={4} className={FIELD} />
+      </div>
+      <label className="sm:col-span-2 flex items-start gap-3 text-caption text-brand-ink/70">
+        <input type="checkbox" name="consent" value="Yes" required className="mt-1 accent-brand-orange" />
+        <span>I agree to Airavat Strategies using these details to reply to me, as set out in the <a href="/privacy.html" className="underline hover:text-brand-orange">Privacy Policy</a>.</span>
+      </label>
+      <div className="sm:col-span-2 flex flex-col sm:flex-row sm:items-center gap-3">
+        <button type="submit" disabled={status === 'sending'} className={`${PRIMARY_BTN} disabled:opacity-60`}>
+          {status === 'sending' ? 'Sending...' : 'Send enquiry'}
+        </button>
+        {status === 'error' && (
+          <p className="text-caption text-brand-orange-dark">Your message could not be sent. Please email or WhatsApp us instead.</p>
+        )}
+      </div>
+    </form>
+  );
+}
 
 function Logo({ dark = false }) {
   return (
@@ -92,10 +196,10 @@ function App() {
         <div className="w-[92%] lg:w-[88%] mx-auto">
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="text-center">
             <h1 className="text-section md:text-hero font-bold text-brand-ink mb-4">
-              Shaping Tomorrow's Leaders
+              Political strategy built on booth-level data
             </h1>
-            <p className="text-body text-brand-ink/70 mb-8">
-              Ground Intelligence • Data-Driven Decisions
+            <p className="text-body text-brand-ink/70 mb-8 max-w-[62ch] mx-auto">
+              Airavat Strategies helps candidates, legislators and parties in Karnataka, Telangana, Andhra Pradesh and Goa plan campaigns and govern with evidence.
             </p>
             <a href="#contact" className={PRIMARY_BTN}>{CTA_LABEL}</a>
             <div className="grid md:grid-cols-3 gap-5 mt-12">
@@ -128,7 +232,7 @@ function App() {
                 His expertise lies in constituency analysis, war room strategy, and delivering data-driven solutions for high-profile leaders.
               </p>
               <p>
-                At Airavat Strategies, we combine traditional political wisdom with cutting-edge technology to ensure victory at the ballot box.
+                At Airavat Strategies, we combine traditional political wisdom with cutting-edge technology to help you win the seats that matter.
               </p>
             </div>
             <div className="flex justify-center items-center">
@@ -195,6 +299,22 @@ function App() {
         </div>
       </section>
 
+      {/* How We Work */}
+      <section className="py-16 bg-brand-ink text-white">
+        <div className="w-[92%] lg:w-[88%] mx-auto">
+          <h2 className="text-section font-bold text-center text-white mb-10">How We Work</h2>
+          <ol className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+            {STEPS.map((s, i) => (
+              <li key={s.title} className="border border-white/15 rounded-btn p-6">
+                <span className="font-display text-section font-bold text-brand-orange">{String(i + 1).padStart(2, '0')}</span>
+                <h3 className="text-card font-semibold text-white mt-2 mb-2">{s.title}</h3>
+                <p className="text-white/70">{s.desc}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
       {/* Contact */}
       <section id="contact" className="py-16 bg-white">
         <div className="w-[92%] lg:w-[88%] mx-auto">
@@ -224,7 +344,15 @@ function App() {
             <div className="mt-10 text-center">
               <p className="font-display text-card font-semibold mb-1">Ready to Transform Your Campaign?</p>
               <p className="text-brand-ink/70">Reach out to us today for a confidential consultation</p>
-              <div className="flex flex-col sm:flex-row gap-3 justify-center mt-6">
+              <p className="inline-flex items-center gap-2 text-caption font-semibold mt-3">
+                <Lock className="w-4 h-4 text-brand-orange" />
+                All conversations are confidential. We do not disclose client names.
+              </p>
+              <div className="mt-8 max-w-3xl mx-auto">
+                <EnquiryForm />
+              </div>
+              <p className="text-caption text-brand-ink/70 mt-8">Prefer to talk directly?</p>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center mt-3">
                 <a
                   href="https://wa.me/919652899946?text=Hello%20Airavat%20Strategies%2C%20I%20would%20like%20to%20discuss%20a%20consultation."
                   target="_blank"
