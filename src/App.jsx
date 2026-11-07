@@ -260,6 +260,7 @@ function App() {
               <p className="font-display font-semibold text-white mb-2">Contact</p>
               <p><a href="mailto:contact@airavatstrategies.com" className="text-white/70 hover:text-brand-orange">contact@airavatstrategies.com</a></p>
               <p><a href="tel:+919652899946" className="text-white/70 hover:text-brand-orange">+91 9652899946</a></p>
+              <p><a href="https://www.linkedin.com/company/107107584/" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-brand-orange">LinkedIn</a></p>
               <p><a href="/privacy.html" className="text-white/70 hover:text-brand-orange">Privacy Policy</a></p>
             </div>
           </div>
