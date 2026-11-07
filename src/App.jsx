@@ -3,7 +3,7 @@ import wbImg from './assets/wb.PNG';
 import mhImg from './assets/mh.PNG'; 
 import tnImg from './assets/tn.PNG'; 
 import delImg from './assets/del.PNG'; 
-import vinayImg from './assets/Vinay.png';
+import vinayImg from './assets/Vinay.webp';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Users, Target, Zap, FileText, BarChart3, Menu, X, MessageCircle } from 'lucide-react';
 import { useState } from 'react';
