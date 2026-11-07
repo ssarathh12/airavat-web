@@ -8,16 +8,27 @@ export default {
     extend: {
       colors: {
         brand: {
-          orange: '#ED5906',
-          black: '#000000',
-          cream: '#F6EDDD',
+          orange: '#EC5707',
+          'orange-dark': '#C94A06',
+          ink: '#101519',
+          grey: '#F2F2F2',
         },
       },
       fontFamily: {
-        // This is your 'funky' header font
-        display: ['Syne', 'sans-serif'],
-        // This is your 'clean' body font
-        sans: ['Inter', 'sans-serif'],
+        // Slab-serif headings, matching Airavat documents
+        display: ['"Roboto Slab"', 'Rockwell', 'Georgia', 'serif'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+      },
+      fontSize: {
+        // Five sizes only
+        hero: ['56px', { lineHeight: '1.15' }],
+        section: ['36px', { lineHeight: '1.2' }],
+        card: ['22px', { lineHeight: '1.3' }],
+        body: ['17px', { lineHeight: '1.6' }],
+        caption: ['14px', { lineHeight: '1.5' }],
+      },
+      borderRadius: {
+        btn: '8px',
       },
     },
   },
