@@ -218,7 +218,7 @@ function App() {
               Shaping Tomorrow's Leaders
             </h1>
             <p className="text-body text-brand-ink/70 mb-8 max-w-[62ch] mx-auto">
-              Airavat Strategies helps candidates, legislators and parties in Karnataka, Telangana, Andhra Pradesh and Goa plan campaigns and govern with evidence.
+              Airavat Strategies helps candidates, legislators and parties plan campaigns and govern with evidence.
             </p>
             <a href="#contact" className={PRIMARY_BTN}>{CTA_LABEL}</a>
             <div className="grid md:grid-cols-3 gap-5 mt-12">
