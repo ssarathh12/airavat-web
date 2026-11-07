@@ -1,337 +1,269 @@
-import ktkImg from './assets/ktk.PNG';
-import wbImg from './assets/wb.PNG';
-import mhImg from './assets/mh.PNG'; 
-import tnImg from './assets/tn.PNG'; 
-import delImg from './assets/del.PNG'; 
 import vinayImg from './assets/Vinay.webp';
+import logoMark from './logoMark.js';
+import IndiaMap from './IndiaMap.jsx';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Users, Target, Zap, FileText, BarChart3, Menu, X, MessageCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Users, Target, Zap, FileText, ScanSearch, Compass, PieChart, Menu, X, MessageCircle } from 'lucide-react';
 import { useState } from 'react';
+
+const NAV = [
+  { href: '#about', label: 'About' },
+  { href: '#services', label: 'Services' },
+  { href: '#impact', label: 'Where We Work' },
+  { href: '#contact', label: 'Contact' },
+];
+
+const CTA_LABEL = 'Book a confidential consultation';
+const PRIMARY_BTN = 'inline-flex items-center justify-center gap-2 bg-brand-orange text-white px-6 py-3 rounded-btn font-sans text-caption font-semibold hover:bg-brand-orange-dark transition-colors';
+const SECONDARY_BTN = 'inline-flex items-center justify-center gap-2 border-2 border-brand-ink text-brand-ink px-6 py-3 rounded-btn font-sans text-caption font-semibold hover:bg-brand-ink hover:text-white transition-colors';
+
+// Show content as soon as a little of it is on screen, and only animate once
+const REVEAL = { once: true, amount: 0.1 };
+
+const IMPACT = [
+  { id: 'ka', name: 'Karnataka', year: 'Assembly election 2023' },
+  { id: 'wb', name: 'West Bengal', year: 'Assembly election 2021' },
+  { id: 'mh', name: 'Maharashtra', year: 'Assembly election 2024' },
+  { id: 'tn', name: 'Tamil Nadu', year: 'Assembly election 2021' },
+  { id: 'dl', name: 'Delhi', year: 'Assembly election 2020' },
+];
+
+function Logo({ dark = false }) {
+  return (
+    <span className="flex items-center gap-3">
+      <span className={dark ? 'bg-white rounded-btn p-1.5' : ''}>
+        <img src={logoMark} alt="" className={dark ? 'h-9 w-auto' : 'h-11 w-auto'} />
+      </span>
+      <span className="flex flex-col leading-none">
+        <span className={`font-display font-bold text-card ${dark ? 'text-white' : 'text-brand-ink'}`}>Airavat Strategies</span>
+        <span className="font-display font-semibold text-[10px] tracking-wider text-brand-orange mt-1">Shaping Tomorrow's Leaders</span>
+      </span>
+    </span>
+  );
+}
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#F6EDDD] text-[#000000]">
+    <div className="min-h-screen bg-white text-brand-ink font-sans text-body">
       {/* Navigation */}
-<header className="fixed top-0 w-full bg-white/95 backdrop-blur-md z-50 border-b border-gray-200">
-  <div className="w-[95%] lg:w-[90%] mx-auto">
-    <div className="flex justify-between items-center h-20">
-      
-      {/* Brand - Clickable to Top */}
-      <div className="flex-shrink-0">
-        <a 
-          href="#" 
-          className="text-lg sm:text-xl font-bold text-[#ED5906] font-display cursor-pointer hover:opacity-80 transition-opacity block"
-        >
-          Airavat Strategies
-        </a>
-      </div>
+      <header className="fixed top-0 w-full bg-white/95 backdrop-blur-md z-50 border-b border-brand-grey">
+        <div className="w-[95%] lg:w-[90%] mx-auto">
+          <div className="flex justify-between items-center h-20">
+            <a href="#" aria-label="Airavat Strategies, back to top" className="flex-shrink-0 hover:opacity-80 transition-opacity">
+              <Logo />
+            </a>
 
-      {/* Navigation - Pinned Right */}
-      <nav className="flex items-center gap-2 lg:gap-10">
-        <div className="hidden md:flex items-center gap-6 lg:gap-10">
-          <a href="#impact" className="font-sans text-xs sm:text-sm font-bold text-gray-700 hover:text-[#ED5906] transition-colors uppercase tracking-widest">Impact</a>
-          <a href="#services" className="font-sans text-xs sm:text-sm font-bold text-gray-700 hover:text-[#ED5906] transition-colors uppercase tracking-widest">Services</a>
-          <a href="#about" className="font-sans text-xs sm:text-sm font-bold text-gray-700 hover:text-[#ED5906] transition-colors uppercase tracking-widest">About</a>
+            <nav className="flex items-center gap-2 lg:gap-8">
+              <div className="hidden lg:flex items-center gap-8">
+                {NAV.map((n) => (
+                  <a key={n.href} href={n.href} className="text-caption font-semibold text-brand-ink hover:text-brand-orange transition-colors">{n.label}</a>
+                ))}
+              </div>
+              <a href="#contact" className={`hidden sm:inline-flex ${PRIMARY_BTN}`}>{CTA_LABEL}</a>
+              <button
+                className="lg:hidden p-2 text-brand-ink"
+                aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+                aria-expanded={isMenuOpen}
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+              >
+                {isMenuOpen ? <X size={26} /> : <Menu size={26} />}
+              </button>
+            </nav>
+          </div>
         </div>
-        {/* Secure Victory Button - Hidden on mobile */}
-        <a 
-          href="#contact" 
-          className="hidden sm:inline-block bg-black text-white px-6 sm:px-10 py-2 sm:py-3 rounded-full font-display text-[9px] sm:text-[11px] font-black uppercase tracking-[0.15em] hover:bg-[#ED5906] transition-all shadow-xl active:scale-95 whitespace-nowrap flex-shrink-0"
-        >
-          Secure Victory
-        </a>
-        
-        {/* Mobile Menu Button */}
-        <button 
-          className="md:hidden p-2"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </nav>
-    </div>
 
-    {/* Mobile Dropdown Menu */}
-    {isMenuOpen && (
-      <div className="md:hidden pb-4 border-t border-gray-200 bg-white">
-        <a href="#impact" className="block py-2 px-4 font-sans text-sm font-bold text-gray-700 hover:text-[#ED5906] transition-colors uppercase tracking-widest" onClick={() => setIsMenuOpen(false)}>Impact</a>
-        <a href="#services" className="block py-2 px-4 font-sans text-sm font-bold text-gray-700 hover:text-[#ED5906] transition-colors uppercase tracking-widest" onClick={() => setIsMenuOpen(false)}>Services</a>
-        <a href="#about" className="block py-2 px-4 font-sans text-sm font-bold text-gray-700 hover:text-[#ED5906] transition-colors uppercase tracking-widest" onClick={() => setIsMenuOpen(false)}>About</a>
-        {/* Secure Victory in Mobile Menu */}
-        <a 
-          href="#contact" 
-          className="block sm:hidden bg-black text-white px-4 py-2 mx-4 mt-2 rounded-full font-display text-[10px] font-black uppercase tracking-[0.15em] hover:bg-[#ED5906] transition-all text-center"
-          onClick={() => setIsMenuOpen(false)}
-        >
-          Secure Victory
-        </a>
-      </div>
-    )}
-  </div>
-</header>
+        {/* Mobile menu: full panel with the CTA at the bottom */}
+        {isMenuOpen && (
+          <div className="lg:hidden absolute left-0 right-0 top-full h-[calc(100dvh-80px)] overflow-y-auto bg-white border-t border-brand-grey flex flex-col justify-between px-6 py-8">
+            <div className="flex flex-col gap-2">
+              {NAV.map((n) => (
+                <a key={n.href} href={n.href} className="py-3 font-display text-card font-semibold text-brand-ink border-b border-brand-grey" onClick={() => setIsMenuOpen(false)}>{n.label}</a>
+              ))}
+            </div>
+            <a href="#contact" className={PRIMARY_BTN} onClick={() => setIsMenuOpen(false)}>{CTA_LABEL}</a>
+          </div>
+        )}
+      </header>
 
-      {/* Hero Section */}
-      <section className="pt-20 sm:pt-24 pb-8 sm:pb-12 px-0">
-        <div className="w-full px-2 sm:px-4 md:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center"
-          >
-            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 text-[#101519]">
-              SHAPING TOMORROW'S LEADERS
+      {/* Hero */}
+      <section className="pt-32 pb-14 bg-white">
+        <div className="w-[92%] lg:w-[88%] mx-auto">
+          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="text-center">
+            <h1 className="text-section md:text-hero font-bold text-brand-ink mb-4">
+              Shaping Tomorrow's Leaders
             </h1>
-            <p className="font-sans text-base sm:text-lg md:text-xl mb-6 sm:mb-8 text-gray-700">
+            <p className="text-body text-brand-ink/70 mb-8">
               Ground Intelligence • Data-Driven Decisions
             </p>
-            <div className="grid md:grid-cols-3 gap-4 sm:gap-6 mt-6 sm:mt-8">
-              <motion.div
-                whileInView={{ opacity: 1, scale: 1 }}
-                initial={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.5 }}
-                className="bg-white p-4 rounded-lg shadow-lg"
-              >
-                <Users className="w-10 h-10 text-[#ED5906] mb-2 mx-auto" />
-                <h3 className="font-display text-base font-semibold mb-1">Voter Analysis</h3>
-                <p className="text-sm">Deep constituency insights for strategic planning</p>
-              </motion.div>
-              <motion.div
-                whileInView={{ opacity: 1, scale: 1 }}
-                initial={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="bg-white p-4 rounded-lg shadow-lg"
-              >
-                <Target className="w-10 h-10 text-[#ED5906] mb-2 mx-auto" />
-                <h3 className="font-display text-base font-semibold mb-1">Campaign Strategy</h3>
-                <p className="font-sans text-sm">Comprehensive election management solutions</p>
-              </motion.div>
-              <motion.div
-                whileInView={{ opacity: 1, scale: 1 }}
-                initial={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="bg-white p-4 rounded-lg shadow-lg"
-              >
-                <BarChart3 className="w-10 h-10 text-[#ED5906] mb-2 mx-auto" />
-                <h3 className="font-display text-base font-semibold mb-1">Data Visualization</h3>
-                <p className="font-sans text-sm">Clear insights from complex political data</p>
-              </motion.div>
+            <a href="#contact" className={PRIMARY_BTN}>{CTA_LABEL}</a>
+            <div className="grid md:grid-cols-3 gap-5 mt-12">
+              {[
+                { icon: ScanSearch, title: 'Voter Analysis', desc: 'Deep constituency insights for strategic planning' },
+                { icon: Compass, title: 'Campaign Strategy', desc: 'Comprehensive election management solutions' },
+                { icon: PieChart, title: 'Data Visualization', desc: 'Clear insights from complex political data' },
+              ].map((c) => (
+                <div key={c.title} className="bg-brand-grey p-6 rounded-btn">
+                  <c.icon className="w-10 h-10 text-brand-orange mb-3 mx-auto" />
+                  <h3 className="text-card font-semibold mb-1">{c.title}</h3>
+                  <p className="text-caption text-brand-ink/70">{c.desc}</p>
+                </div>
+              ))}
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* About the Founder */}
-      <section id="about" className="py-8 sm:py-10 md:py-12 px-0 bg-white">
-        <div className="w-full px-2 sm:px-4 md:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            className="grid md:grid-cols-2 gap-8 items-center"
-          >
-            <div>
-              <h2 className="font-display text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 text-[#ED5906]">Meet our Founder</h2>
-              <p className="font-sans text-sm sm:text-base mb-2 sm:mb-3">
+      <section id="about" className="py-16 bg-brand-grey">
+        <div className="w-[92%] lg:w-[88%] mx-auto">
+          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={REVEAL} transition={{ duration: 0.4 }} className="grid md:grid-cols-2 gap-10 items-center">
+            <div className="max-w-[65ch]">
+              <h2 className="text-section font-bold mb-5">Meet Our Founder</h2>
+              <p className="mb-4">
                 With over 6 years of experience in political consultancy, Vinay has worked with major parties including BJP, INC, AAP, and Shiv Sena (UBT).
               </p>
-              <p className="font-sans text-sm sm:text-base mb-2 sm:mb-3">
+              <p className="mb-4">
                 His expertise lies in constituency analysis, war room strategy, and delivering data-driven solutions for high-profile leaders.
               </p>
-              <p className="font-sans text-sm sm:text-base">
+              <p>
                 At Airavat Strategies, we combine traditional political wisdom with cutting-edge technology to ensure victory at the ballot box.
               </p>
             </div>
             <div className="flex justify-center items-center">
               <div className="w-80 h-80">
-                <img
-                  src={vinayImg}
-                  alt="VKP"
-                  className="w-full h-full object-cover object-[50%_20%] rounded-lg shadow-lg"
-                />
+                <img src={vinayImg} alt="Vinay Krishna Polnati, Founder of Airavat Strategies" className="w-full h-full object-cover object-[50%_20%] rounded-btn" />
               </div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Impact Map */}
-      <section id="impact" className="py-8 sm:py-10 md:py-12 px-0 bg-gradient-to-r from-[#F6EDDD] to-gray-100">
-        <div className="w-full px-2 sm:px-4 md:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="flex flex-col md:flex-row items-center gap-8 lg:gap-12"
-          >
-            {/* Left Side - Icon and Branding */}
-            <div className="w-full md:w-1/3 flex flex-col items-center md:items-start space-y-6">
-              <motion.div
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                transition={{ duration: 0.6 }}
-                className="relative"
-              >
-                {/* Globe with People Icon */}
-                <div className="w-32 h-32 sm:w-40 sm:h-40 flex items-center justify-center">
-                  <svg viewBox="0 0 200 200" className="w-full h-full text-[#ED5906]" fill="none" stroke="currentColor" strokeWidth="4">
-                    {/* Globe */}
-                    <circle cx="100" cy="100" r="70" />
-                    <path d="M 30 100 Q 100 40, 170 100" />
-                    <path d="M 30 100 Q 100 160, 170 100" />
-                    <line x1="100" y1="30" x2="100" y2="170" />
-                    
-                    {/* People */}
-                    <circle cx="70" cy="80" r="8" />
-                    <circle cx="100" cy="70" r="8" />
-                    <circle cx="130" cy="80" r="8" />
-                    <path d="M 70 88 L 65 110 M 70 88 L 75 110 M 100 78 L 95 110 M 100 78 L 105 110 M 130 88 L 125 110 M 130 88 L 135 110" />
-                    
-                    {/* Hands holding */}
-                    <path d="M 50 140 Q 60 120, 70 115" />
-                    <path d="M 150 140 Q 140 120, 130 115" />
-                  </svg>
-                </div>
-              </motion.div>
-              
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                className="text-center md:text-left space-y-2"
-              >
-                <h2 className="font-display text-5xl font-extrabold text-brand-black uppercase">
-  Our <span className="text-brand-orange">Impact</span></h2>
-                <p className="text-sm sm:text-base text-gray-700"></p>
-              </motion.div>
-            </div>
-
-            {/* Right Side - Map Grid */}
-            <div className="w-full md:w-2/3">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                {[
-                  { name: 'Karnataka \nAE 2023', id: 'karnataka',img: ktkImg },
-                  { name: 'West Bengal \nAE 2021', id: 'westbengal',img: wbImg },
-                  { name: 'Maharashtra \nAE 2024', id: 'maharashtra',img: mhImg },
-                  { name: 'Tamil Nadu \nAE 2021', id: 'tamilnadu',img: tnImg },
-                  { name: 'Delhi \nAE 2020', id: 'delhi',img: delImg }
-                ].map((region, index) => (
-                  <motion.div
-                    key={region.id}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="bg-white p-4 sm:p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
-                  >
-                    {/* Mock Map Visualization */}
-                    <div className="bg-white rounded-md mb-3 h-32 sm:h-48 flex items-center justify-center border border-gray-100 overflow-hidden shadow-inner">
-  {region.img ? (
-    <img 
-      src={region.img} 
-      alt={region.name} 
-      className="w-full h-full object-contain p-2 hover:scale-110 transition-transform duration-500" 
-    />
-  ) : (
-    <div className="text-gray-300">Map Loading...</div>
-  )}
-</div>
-                    <h4 className="font-display font-bold text-sm uppercase  tracking-wider whitespace-pre-line leading-tight text-center w-full">
-  {region.name}</h4>
-                  </motion.div>
+      {/* Impact: one map instead of five state images */}
+      <section id="impact" className="py-16 bg-white">
+        <div className="w-[92%] lg:w-[88%] mx-auto">
+          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={REVEAL} transition={{ duration: 0.4 }} className="grid md:grid-cols-2 gap-10 items-center">
+            <div>
+              <h2 className="text-section font-bold mb-3">Our <span className="text-brand-orange">Impact</span></h2>
+              <p className="text-brand-ink/70 mb-8 max-w-[60ch]">Assembly elections where our team has run campaign strategy and war rooms.</p>
+              <ul className="divide-y divide-brand-grey border-y border-brand-grey">
+                {IMPACT.map((s) => (
+                  <li key={s.id} className="flex items-center justify-between py-3">
+                    <span className="flex items-center gap-3 font-display text-card font-semibold">
+                      <span className="w-3 h-3 rounded-sm bg-brand-orange" aria-hidden="true" />
+                      {s.name}
+                    </span>
+                    <span className="text-caption text-brand-ink/70">{s.year}</span>
+                  </li>
                 ))}
-              </div>
+              </ul>
+              <a href="#contact" className={`mt-8 ${PRIMARY_BTN}`}>{CTA_LABEL}</a>
+            </div>
+            <div className="flex justify-center">
+              <IndiaMap highlight={IMPACT.map((s) => s.id)} className="w-full max-w-md h-auto" />
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* Services */}
-        <section id="services" className="py-8 sm:py-10 md:py-12 px-0 bg-white">
-          <div className="w-full px-2 sm:px-4 md:px-6 lg:px-8">
-            <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-6 sm:mb-8"
-            >
-          <h2 className="font-display text-2xl sm:text-3xl font-bold text-[#ED5906]">Our Services</h2>
-            </motion.div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          {[
-            { icon: Target, title: 'Comprehensive Campaign Strategy', desc: 'Constituency blueprints covering positioning, messaging, voter segments and a phase-wise outreach plan.' },
-            { icon: Users, title: 'Voter Segmentation & Micro-targeting', desc: 'Booth-level analysis of past Form 20 results and demographics to find where votes can be won.' },
-            { icon: Zap, title: 'AI-Integrated Digital Outreach', desc: 'Content, monitoring and response for social and messaging channels, informed by daily sentiment tracking.' },
-            { icon: FileText, title: 'Legislative & Parliamentary Support', desc: 'Question drafting, bill briefs, debate notes and daily media analysis for sitting MPs and MLAs.' }
-          ].map((service, index) => (
-            <motion.div
-              key={service.title}
-              whileInView={{ opacity: 1, y: 0 }}
-              initial={{ opacity: 0, y: 20 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-[#F6EDDD] p-4 rounded-lg shadow-lg"
-            >
-              <service.icon className="w-8 sm:w-10 h-8 sm:h-10 text-[#ED5906] mb-2 sm:mb-3"/>
-              <h3 className="font-display text-sm sm:text-base font-semibold mb-1 sm:mb-2">{service.title}</h3>
-              <p className="font-sans mt-4 text-gray-600 text-base">{service.desc}</p>
-            </motion.div>
-          ))}
-            </div>
-          </div>
-        </section>
-      <section id="contact" className="py-8 sm:py-10 md:py-12 px-0 bg-white">
-        <div className="w-full px-2 sm:px-4 md:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-6 sm:mb-8"
-          >
-            <h2 className="font-display text-2xl sm:text-3xl font-bold text-[#ED5906]">Get in Touch</h2>
-            <p className="font-sans text-sm sm:text-base mt-1 sm:mt-2">Let's discuss how we can help shape your political success</p>
-          </motion.div>
-          <div className="bg-[#F6EDDD] p-4 sm:p-6 rounded-lg shadow-lg">
-            <div className="grid md:grid-cols-3 gap-4 sm:gap-6 text-center">
-              <div className="flex flex-col items-center">
-                <Mail className="w-8 sm:w-10 h-8 sm:h-10 text-[#ED5906] mb-1 sm:mb-2" />
-                <h3 className="font-display text-base sm:text-lg font-semibold mb-0.5 sm:mb-1">Email Us</h3>
-                <a href="mailto:contact@airavatstrategies.com" className="font-sans text-gray-700 text-xs sm:text-sm hover:text-[#ED5906] underline-offset-2 hover:underline">contact@airavatstrategies.com</a>
-                
-              </div>
-              <div className="flex flex-col items-center">
-                <Phone className="w-8 sm:w-10 h-8 sm:h-10 text-[#ED5906] mb-1 sm:mb-2" />
-                <h3 className="font-display text-base sm:text-lg font-semibold mb-0.5 sm:mb-1">Call Us</h3>
-                <a href="tel:+919652899946" className="font-sans text-gray-700 text-xs sm:text-sm hover:text-[#ED5906] underline-offset-2 hover:underline">+91 9652899946</a>
-              </div>
-              <div className="flex flex-col items-center">
-                <MapPin className="w-8 sm:w-10 h-8 sm:h-10 text-[#ED5906] mb-1 sm:mb-2" />
-                <h3 className="font-display text-base sm:text-lg font-semibold mb-0.5 sm:mb-1">Visit Us</h3>
-                <p className="font-sans text-gray-700 text-xs sm:text-sm">Alt F Coworking Space, Begumpet</p>
-                <p className="font-sans text-gray-700 text-xs sm:text-sm">Hyderabad, Telangana, India</p>
-              </div>
-            </div>
-            <div className="mt-4 sm:mt-6 text-center">
-              <p className="font-sans text-sm sm:text-base font-semibold text-[#ED5906] mb-0.5 sm:mb-1">Ready to Transform Your Campaign?</p>
-              <p className="font-sans text-gray-700 text-xs sm:text-sm">Reach out to us today for a confidential consultation</p>
-              <a
-                href="https://wa.me/919652899946?text=Hello%20Airavat%20Strategies%2C%20I%20would%20like%20to%20discuss%20a%20consultation."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 mt-4 bg-[#EC5707] text-white px-6 py-3 rounded-full font-sans text-sm font-semibold hover:opacity-90 transition-opacity"
+      <section id="services" className="py-16 bg-brand-grey">
+        <div className="w-[92%] lg:w-[88%] mx-auto">
+          <h2 className="text-section font-bold text-center mb-10">Our Services</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+            {[
+              { icon: Target, title: 'Comprehensive Campaign Strategy', desc: 'Constituency blueprints covering positioning, messaging, voter segments and a phase-wise outreach plan.' },
+              { icon: Users, title: 'Voter Segmentation & Micro-targeting', desc: 'Booth-level analysis of past Form 20 results and demographics to find where votes can be won.' },
+              { icon: Zap, title: 'AI-Integrated Digital Outreach', desc: 'Content, monitoring and response for social and messaging channels, informed by daily sentiment tracking.' },
+              { icon: FileText, title: 'Legislative & Parliamentary Support', desc: 'Question drafting, bill briefs, debate notes and daily media analysis for sitting MPs and MLAs.' },
+            ].map((service, index) => (
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={REVEAL}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                className="bg-white p-6 rounded-btn"
               >
-                <MessageCircle className="w-5 h-5" />
-                Chat on WhatsApp
-              </a>
+                <service.icon className="w-10 h-10 text-brand-orange mb-4" />
+                <h3 className="text-card font-semibold mb-3">{service.title}</h3>
+                <p className="text-brand-ink/70">{service.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="py-16 bg-white">
+        <div className="w-[92%] lg:w-[88%] mx-auto">
+          <div className="text-center mb-10">
+            <h2 className="text-section font-bold">Get in Touch</h2>
+            <p className="mt-2 text-brand-ink/70">Let's discuss how we can help shape your political success</p>
+          </div>
+          <div className="bg-brand-grey p-8 rounded-btn">
+            <div className="grid md:grid-cols-3 gap-8 text-center">
+              <div className="flex flex-col items-center">
+                <Mail className="w-10 h-10 text-brand-orange mb-2" />
+                <h3 className="text-card font-semibold mb-1">Email Us</h3>
+                <a href="mailto:contact@airavatstrategies.com" className="text-caption text-brand-ink hover:text-brand-orange underline-offset-2 hover:underline">contact@airavatstrategies.com</a>
+              </div>
+              <div className="flex flex-col items-center">
+                <Phone className="w-10 h-10 text-brand-orange mb-2" />
+                <h3 className="text-card font-semibold mb-1">Call Us</h3>
+                <a href="tel:+919652899946" className="text-caption text-brand-ink hover:text-brand-orange underline-offset-2 hover:underline">+91 9652899946</a>
+              </div>
+              <div className="flex flex-col items-center">
+                <MapPin className="w-10 h-10 text-brand-orange mb-2" />
+                <h3 className="text-card font-semibold mb-1">Visit Us</h3>
+                <p className="text-caption">Alt F Coworking Space, Begumpet</p>
+                <p className="text-caption">Hyderabad, Telangana, India</p>
+              </div>
+            </div>
+            <div className="mt-10 text-center">
+              <p className="font-display text-card font-semibold mb-1">Ready to Transform Your Campaign?</p>
+              <p className="text-brand-ink/70">Reach out to us today for a confidential consultation</p>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center mt-6">
+                <a
+                  href="https://wa.me/919652899946?text=Hello%20Airavat%20Strategies%2C%20I%20would%20like%20to%20discuss%20a%20consultation."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={PRIMARY_BTN}
+                >
+                  <MessageCircle className="w-5 h-5" />
+                  Chat on WhatsApp
+                </a>
+                <a href="mailto:contact@airavatstrategies.com?subject=Consultation%20request" className={SECONDARY_BTN}>
+                  <Mail className="w-5 h-5" />
+                  Email us
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#000000] text-white py-4 sm:py-6 px-0">
-        <div className="w-full px-2 sm:px-4 md:px-6 lg:px-8 text-center">
-          <p className="font-sans text-xs sm:text-sm">&copy; 2026 Airavat Strategies. All rights reserved.</p>
+      <footer className="bg-brand-ink text-white pt-12 pb-6">
+        <div className="w-[92%] lg:w-[88%] mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 pb-8 border-b border-white/15">
+            <div>
+              <Logo dark />
+              <p className="text-caption text-white/70 mt-4 max-w-xs">Political strategy, constituency intelligence and legislative support.</p>
+            </div>
+            <div className="text-caption space-y-1">
+              <p className="font-display font-semibold text-white mb-2">Office</p>
+              <p className="text-white/70">Alt F Coworking Space, Begumpet</p>
+              <p className="text-white/70">Hyderabad, Telangana, India</p>
+            </div>
+            <div className="text-caption space-y-1">
+              <p className="font-display font-semibold text-white mb-2">Contact</p>
+              <p><a href="mailto:contact@airavatstrategies.com" className="text-white/70 hover:text-brand-orange">contact@airavatstrategies.com</a></p>
+              <p><a href="tel:+919652899946" className="text-white/70 hover:text-brand-orange">+91 9652899946</a></p>
+              <p><a href="/privacy.html" className="text-white/70 hover:text-brand-orange">Privacy Policy</a></p>
+            </div>
+          </div>
+          <p className="text-caption text-white/60 pt-6 text-center">&copy; 2026 Airavat Strategies (OPC) Private Limited. All rights reserved.</p>
         </div>
       </footer>
     </div>
